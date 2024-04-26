@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#include <vector> 
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+bool pencaian(string kata,char matrix[3][3]){
+    // horizontal
+    //int n = kata.length();
+    string ketemu = "";
+    int index = 0;
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+             // B A T
+            if(kata[index] == matrix[i][j]){
+                //temp = matrix[i][j];
+                ketemu+=matrix[i][j];
+                index++;
+                //ketemu.append(temp);
+            }
+            // debug
+            cout << matrix[i][j];
+        }
+            // debug
+            cout << endl;
+            if(ketemu == kata) {
+                return true;
+            }
+    }
+    return false;
+}
+
+int main()
+{
+    char matrix[3][3]{
+        {'B','A','T'},
+        {'U','R','A'},
+        {'T','A','O'}
+    };
+    
+    string kata;
+    cin >> kata;
+    
+    cout << pencaian(kata,matrix);
+    
+
+
+    return 0;
+}
+ 
