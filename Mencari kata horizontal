@@ -20,14 +20,36 @@ bool pencaian(string kata,char matrix[3][3]){
                 //ketemu.append(temp);
             }
             // debug
-            cout << matrix[i][j];
+            //cout << matrix[i][j];
         }
             // debug
-            cout << endl;
+            //cout << endl;
             if(ketemu == kata) {
                 return true;
             }
     }
+    
+    // vertikal
+    ketemu = "";
+    index = 0;
+        //  ij
+    /*  00  01  02
+        10  11  12
+        20  21  22
+    */  
+    
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            if(kata[index] == matrix[j][i]){
+                index++;
+                ketemu+=matrix[j][i];
+            }
+        }
+        if(ketemu == kata){
+            return true;
+        }
+    }
+    
     return false;
 }
 
@@ -48,4 +70,3 @@ int main()
 
     return 0;
 }
- 
