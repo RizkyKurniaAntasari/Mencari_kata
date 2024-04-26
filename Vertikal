@@ -1,0 +1,131 @@
+#include <bits/stdc++.h>
+#include <vector> 
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+// for(int i = start-1; i != end ; i += k )
+bool pencaian(string kata,char matrix_2[5][5]){
+    // horizontal
+    //int n = kata.length();
+    string ketemu = "";
+    int index = 0;
+
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+             // B A T
+            if(kata[index] == matrix_2[i][j]){
+                //temp = matrix[i][j];
+                ketemu+=matrix_2[i][j];
+                index++;
+                //ketemu.append(temp);
+                
+            }
+            
+            //debug
+            cout << "HURUF : " << matrix_2[i][j] << " POSISI i - j = " << i << "-" << j << " ";
+            cout << " ,ketemu : " << ketemu << endl;
+            
+            if(ketemu == kata) {
+                return true;
+            }
+            
+        }
+        index= 0;
+        ketemu = "";
+            // debug
+            //cout << endl;
+
+    }
+
+    
+    
+    // vertikal
+    ketemu = "";
+    index = 0;
+    
+        //  ij
+    /*  00  01  02
+        10  11  12
+        20  21  22
+    */ 
+/*
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            if(kata[index] == matrix_2[j][i]){
+                index++;
+                ketemu+=matrix_2[j][i];
+            }
+            if(ketemu == kata){
+                return true;
+            }
+        }
+        ketemu = "";
+        index = 0;
+    }
+*/
+
+
+/*
+    //diagonal kiri atas ke kanan bawah
+    ketemu = "";
+    index = 0;
+    for(int i = 0;i <5;i++){
+        for(int j =0;j < 5; j++){
+            if(i == j && kata[index] == matrix_2[i][j]){ //|| i < j && kata[index] == matrix_2[i][j] || i > j && kata[index] == matrix_2[i][j]){
+                index++;
+                ketemu+=matrix_2[i][j];
+                
+                // debug
+                cout << matrix_2[i][j] << endl;
+                
+            if(ketemu == kata){
+                    return true;
+                }
+            }
+        }
+    }
+*/
+    // diagonal kanan kiri
+    ketemu = "";
+    index = 0;
+    int x = 0, y = 1;
+    bool jalan = true;
+    while(x < 5){
+        
+        if(ketemu[index] == matrix_2[x][y]){
+            ketemu+=matrix_2[x][y];
+            index++;
+        }
+        x++;
+        y++;
+        if(y == 4) y = 1;
+    }
+    
+    return false;
+}
+
+int main()
+{
+    char matrix[3][3]{
+        {'B','A','T'},
+        {'U','R','A'},
+        {'T','A','O'}
+    };
+    char matrix_2[5][5]{// 01,12,23
+        {'B','A','T','A','K'},
+        {'U','R','A','M','E'},
+        {'T','A','O','E','R'},
+        {'A','B','K','R','A'},
+        {'H','A','A','I','M'}
+    };
+    
+    string kata;
+    cin >> kata;
+    
+    transform(kata.begin(),kata.end(),kata.begin(), ::toupper);
+    
+    cout << pencaian(kata,matrix_2);
+    
+    return 0;
+}
