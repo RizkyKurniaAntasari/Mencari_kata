@@ -19,6 +19,21 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
             if (found) return true;
         }
     }
+
+//mencari diagonal kanan bawah ke kiri atas 
+    for (int i=SIZE-1;i>=word.length()-1;i--){
+        for (int j=SIZE-1;j>=word.length()-1;j--){
+            bool found = true;
+            for (int k=0;k<word.length();k++){
+                if (matriks [i-k][j-k]!=word[k]){
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return true;
+        }
+    }
+    
     
     
     return false;
