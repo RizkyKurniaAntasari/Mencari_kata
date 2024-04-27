@@ -59,7 +59,7 @@ for(int aturan = 0; aturan < 2; aturan++){
                 ketemu+=matrix_2[j][i];
             }
               //debug
-             cout << "HURUF : " << matrix_2[j][i] << " POSISI kolom - baris = " << j << "-" << i << " ";
+             cout << "HURUF : " << matrix_2[j][i] << " POSISI baris - kolom = " << j << "-" << i << " ";
              cout << " ,ketemu : " << ketemu << endl;
  
             if(ketemu == kata){
