@@ -5,31 +5,26 @@
 #include <cctype>
 using namespace std;
 
-bool pencaian(string kata,char matrix_2[5][5]){
-    // horizontal
+bool pencarian(string kata, char matrux_2[5][5]){
     string ketemu = "";
-    int index = 0;
+    int index= 0;
 
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             if(kata[index] == matrix_2[i][j]){
-                ketemu+=matrix_2[i][j];
-                index++;  
+                ketemu += matrix_2[i][j];
+                index++;    
             }
-            
-            if(ketemu == kata) {
+            if(ketemu == kata){
                 return true;
             }
-            
         }
-        index= 0;
+        index = 0;
         ketemu = "";
     }
-
 }
 
-int main()
-{
+int main(){
     char matrix[3][3]{
         {'B','A','T'},
         {'U','R','A'},
@@ -42,13 +37,19 @@ int main()
         {'A','B','K','R','A'},
         {'H','A','A','I','M'}
     };
-    
+
     string kata;
-    cin >> kata;
-    
+    cin>>kata;
+
     transform(kata.begin(),kata.end(),kata.begin(), ::toupper);
-    
     cout << pencaian(kata,matrix_2);
-    
+
     return 0;
 }
+
+    
+
+
+
+
+
