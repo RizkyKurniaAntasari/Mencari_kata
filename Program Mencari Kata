@@ -4,3 +4,100 @@ Anggota : Alia Rahayu
           Bungaran Natanael Siahaan 2317051048
           Alia Rahayu 2317051079
 */
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+const int SIZE = 5;
+
+bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
+    //mencari diagonal kiri atas ke kanan bawah (BISA)
+    for (int i=0;i<SIZE;i++){
+        for (int j=0;j<SIZE;j++){
+            bool found = true;
+            for (int k=0;k<word.length();k++){
+                if (matriks [i+k][j+k]!=word[k]){
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return true;
+        }
+    }
+
+//mencari diagonal kanan bawah ke kiri atas 
+    for (int i=SIZE-1;i>=word.length()-1;i--){
+        for (int j=SIZE-1;j>=word.length()-1;j--){
+            bool found = true;
+            for (int k=0;k<word.length();k++){
+                if (matriks [i-k][j-k]!=word[k]){
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return true;
+        }
+    }
+
+// Mencari diagonal kanan atas ke kiri bawah
+    for (int i=0;i<SIZE;i++) {
+        for (int j=SIZE-1;j>=word.length()-1;j--) {
+        bool found = true;
+            for (int k=0;k<word.length();k++) {
+                if (matriks[i+k][j-k] != word[k]) {
+                found = false;
+                break;
+                }
+            }
+            if (found) return true;
+        }
+    }
+
+// Mencari diagonal kiri bawah ke kanan atas
+    for (int i=SIZE-1;i>=word.length()-1;i--) {
+        for (int j=0;j<SIZE;j++) {
+        bool found = true;
+            for (int k=0;k<word.length();k++) {
+                if (matriks[i-k][j+k] != word[k]) {
+                found = false;
+                break;
+                }
+            }
+            if (found) return true;
+        }
+    }
+    
+    
+    
+    return false;
+}
+
+int main()
+{
+    char matriks[SIZE][SIZE]={
+        {'H','E','L','L','O'},
+        {'A','B','C','D','E'},
+        {'H','G','H','I','J'},
+        {'K','L','M','N','O'},
+        {'P','Q','R','S','T'}
+    };
+    
+    int percobaan;
+    cin >> percobaan;
+    cin.ignore();
+    string words[percobaan];
+
+    for (int i = 0; i < percobaan; ++i) {
+        cin >> words[i];
+    }
+    
+    for (int i = 0; i < percobaan; ++i) {
+        bool found = Mencari_Kata(matriks, words[i]);
+        if (found) cout << "Ada "<< endl;
+        else cout << "Tidak Ada "<< endl;
+    }
+    
+    return 0;
+}
