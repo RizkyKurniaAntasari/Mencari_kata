@@ -1,6 +1,5 @@
 /*
-Anggota : Alia Rahayu
-          Rizky Kurnia Antasari 2357051011
+Anggota : Rizky Kurnia Antasari 2357051011
           Bungaran Natanael Siahaan 2317051048
           Alia Rahayu 2317051079
 */
@@ -96,7 +95,34 @@ for (int i = SIZE - 1; i >= 0; --i) {
         if (found) return true;
     }
 }
-    
+
+//horizontal (kanan-kiri)
+for(int i = 0; i < SIZE-1; i++){
+    for (int j = SIZE-1; j++){
+         bool found = true;
+         for(int k = 0; k < word.length(); ++k){
+             if (matriks[i][j-k] != word[k]){
+                 found = false;
+                 break;
+             }
+          }
+          if (found) return true;
+     }
+}
+
+//horizontal(kiri-kanan)
+for (int i = 0; i < SIZE; i++){
+     for(int j = 0; j < SIZE; j++){
+          bool found = true;
+          for (int k = 0; k < word.length(); ++k){
+               if (matriks[i][j+k] != word[k]){
+                   found = false;
+                   break;
+               }
+          }
+          if(found) return true;
+      }
+}
     return false;
 }
 
