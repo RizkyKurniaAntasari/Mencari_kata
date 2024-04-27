@@ -13,9 +13,11 @@ const int SIZE = 23;
 
 bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
     //mencari diagonal kiri atas ke kanan bawah (BISA)
+    bool found = true;
+
     for (int i=0;i<SIZE;i++){
         for (int j=0;j<SIZE;j++){
-            bool found = true;
+            found = true;
             for (int k=0;k<word.length();k++){
                 if (matriks [i+k][j+k]!=word[k]){
                     found = false;
@@ -29,7 +31,7 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
 //mencari diagonal kanan bawah ke kiri atas 
     for (int i=SIZE-1;i>=word.length()-1;i--){
         for (int j=SIZE-1;j>=word.length()-1;j--){
-            bool found = true;
+             found = true;
             for (int k=0;k<word.length();k++){
                 if (matriks [i-k][j-k]!=word[k]){
                     found = false;
@@ -43,7 +45,7 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
 // Mencari diagonal kanan atas ke kiri bawah
     for (int i=0;i<SIZE;i++) {
         for (int j=SIZE-1;j>=word.length()-1;j--) {
-        bool found = true;
+             found = true;
             for (int k=0;k<word.length();k++) {
                 if (matriks[i+k][j-k] != word[k]) {
                 found = false;
@@ -57,7 +59,7 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
 // Mencari diagonal kiri bawah ke kanan atas
     for (int i=SIZE-1;i>=word.length()-1;i--) {
         for (int j=0;j<SIZE;j++) {
-        bool found = true;
+             found = true;
             for (int k=0;k<word.length();k++) {
                 if (matriks[i-k][j+k] != word[k]) {
                 found = false;
@@ -71,8 +73,8 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
 // V E R T I K A L (atas - bawah)
 for (int i = 0; i < SIZE; ++i) {
     for (int j = 0; j < SIZE; ++j) {
-        bool found = true;
         for (int k = 0; k < word.length(); ++k) {
+             found = true;
             if (matriks[j + k][i] != word[k]) {
                 found = false;
                 break;
@@ -85,8 +87,8 @@ for (int i = 0; i < SIZE; ++i) {
 // V E R T I K A L (bawah - atas)
 for (int i = SIZE - 1; i >= 0; --i) {
     for (int j = 0; j < SIZE; ++j) {
-        bool found = true;
         for (int k = 0; k < word.length(); ++k) {
+             found = true;
             if (matriks[i - k][j] != word[k]) { // Mengubah indeks baris menjadi i - k
                 found = false;
                 break;
@@ -99,7 +101,7 @@ for (int i = SIZE - 1; i >= 0; --i) {
 //horizontal (kanan-kiri)
 for(int i = 0; i < SIZE-1; i++){
     for (int j = 0;j < SIZE-1; j++){
-         bool found = true;
+         found = true;
          for(int k = 0; k < word.length(); ++k){
              if (matriks[i][j-k] != word[k]){
                  found = false;
@@ -113,7 +115,7 @@ for(int i = 0; i < SIZE-1; i++){
 //horizontal(kiri-kanan)
 for (int i = 0; i < SIZE; i++){
      for(int j = 0; j < SIZE; j++){
-          bool found = true;
+          found = true;
           for (int k = 0; k < word.length(); ++k){
                if (matriks[i][j+k] != word[k]){
                    found = false;
