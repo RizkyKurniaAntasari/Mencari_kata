@@ -69,7 +69,21 @@ bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
         }
     }
     
-    
+        
+// V E R T I K A L (Vertikal)
+for (int i = 0; i < SIZE; ++i) {
+    for (int j = 0; j < SIZE; ++j) {
+        bool found = true;
+        for (int k = 0; k < word.length(); ++k) {
+            if (matriks[j + k][i] != word[k]) {
+                found = false;
+                break;
+            }
+        }
+        if (found) return true;
+    }
+}
+   
     
     return false;
 }
