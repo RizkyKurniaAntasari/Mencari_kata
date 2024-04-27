@@ -47,14 +47,13 @@ bool pencaian(string kata,char matrix_2[5][5]){
         20  21  22
     */ 
 // for( auto it = vec.begin(); vec != end(); it++)
+
     ketemu = "";
     index = 0;
-    int start=0,end = 5,k = 1,aturan = 0;
-    bool jalan = true;
-while(jalan){
+    int start=0,end = 5,k = 1;
+for(int aturan = 0; aturan < 2; aturan++){
     for(int i = start; i != end; i+=k){
         for(int j = start; j != end; j+=k){
-
             if(kata[index] == matrix_2[j][i]){
                 index++;
                 ketemu+=matrix_2[j][i];
@@ -70,17 +69,12 @@ while(jalan){
         ketemu = "";
         index = 0;
     }
-    aturan++;
-    if(aturan == 2){
-        jalan = false;
-        break;
-    }
     swap(start,end);
     k = -1;
     cout << "Next Iter : started ! " << endl; 
     start-=1;
     end-=1;
-} // while
+} // pengatur for utama
 
 
 /*
