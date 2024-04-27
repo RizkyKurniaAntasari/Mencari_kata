@@ -12,7 +12,6 @@ using namespace std;
 const int SIZE = 23;
 
 bool Mencari_Kata(char matriks[SIZE][SIZE], string word) {
-transform(word.begin(), word.end(), word.begin(), ::toupper);
     //mencari diagonal kiri atas ke kanan bawah (BISA)
     for (int i=0;i<SIZE;i++){
         for (int j=0;j<SIZE;j++){
@@ -99,7 +98,7 @@ for (int i = SIZE - 1; i >= 0; --i) {
 
 //horizontal (kanan-kiri)
 for(int i = 0; i < SIZE-1; i++){
-    for (int j = SIZE-1; j++){
+    for (int j = 0;j < SIZE-1; j++){
          bool found = true;
          for(int k = 0; k < word.length(); ++k){
              if (matriks[i][j-k] != word[k]){
@@ -125,6 +124,12 @@ for (int i = 0; i < SIZE; i++){
       }
 }
     return false;
+}
+
+//fungsi agar input bisa dalam bentuk huruf kecil
+string toUpperCase(string str) {
+    transform(str.begin(), str.end(), str.begin(), ::toupper);
+    return str;
 }
 
 int main()
@@ -162,6 +167,7 @@ char matriks[SIZE][SIZE] = {
 
     for (int i = 0; i < percobaan; ++i) {
         cin >> words[i];
+        words[i]=toUpperCase(words[i]);
     }
     
     for (int i = 0; i < percobaan; ++i) {
